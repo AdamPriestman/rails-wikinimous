@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <h1>Wikinimous</h1>
+    <div class="col-sm-8 col-sm-offset-2">
+    <%= link_to "New Article", new_article_path %>
+      <ul>
+        <% @articles.each do |article| %>
+          <li>
+            <h3><%= link_to "#{article.title}", article_path(article), class:"btn p-0" %></h3>
+            <%= article.content %>
+            <%= link_to  article_path(article), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+              <i class="fa-solid fa-trash"></i>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
